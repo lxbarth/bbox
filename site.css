@@ -108,8 +108,18 @@ body {
   padding: 20px 100px;
 }
 
+#attribution {
+  font-size: 12px;
+  position: absolute;
+  bottom: 80px;
+  right: 105px;
+  }
+  #attribution a {
+    color: #8f3f96;
+    }
+
 /* --------------------------------------------------------
- Random
+ Help dropdown
 --------------------------------------------------------- */
 
 #header .help {
