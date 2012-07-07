@@ -45,11 +45,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 body {
   font: 15px/20px 'Helvetica Neue',Helvetica,Arial,sans-serif;
-  color: #f5f5f5;
+  color: #f1eee8;
   }
 
  a {
-  color:#489;
+  color:#077a7d;
   text-decoration:none;
   }
 
@@ -89,66 +89,82 @@ body {
 #header {
   position: absolute;
   z-index: 1;
-  width: 100%;
+  left: 0;
+  right: 0;
   }
+
 #query {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  height: 20px;
+  left: 0;
+  right: 0;
   }
+
 .overlay {
   background: rgba(15, 0, 30, .8);
   padding: 20px;
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
+
+/* --------------------------------------------------------
+ Random
+--------------------------------------------------------- */
+
+#header .help {
+  float: right;
+  margin-top: 15px;
+  cursor: pointer;
+  }
+  #header .help .dropdown {
+      width: 300px;
+      opacity: 0;
+      position: absolute;
+      right: 20px;
+      transition: opacity .3s;
+      -moz-transition: opacity .3s;
+      -webkit-transition: opacity .3s;
+      -o-transition: opacity .3s;
+    }
+    #header .help:hover .dropdown {
+      opacity: 1;
+      }
+    #header .help .dropdown .inner {
+        color: #221133;
+        background-color: #f1eee8;
+        margin-top: 15px;
+        padding: 10px;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #f5f5f5;
+        -moz-box-shadow: 0 0 5px rgba(0,0,0,0.25);
+        box-shadow: 0 0 5px rgba(0,0,0,0.25);
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+      }
+      #header .help .dropdown .inner:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-bottom: 10px solid #f1eee8;
+        border-top: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        position: absolute;
+        z-index: 1;
+        top: -4px;
+        right: 30px;
+        }
 
 /* --------------------------------------------------------
  Map + Map controls
 --------------------------------------------------------- */
 
-.zoomer {
-  text-indent:-9999px;
-  background-image:url(/assets/tilestream-pro/images/controls.png);
-  background-position:60px 60px;
-  background-repeat:no-repeat;
-  overflow:hidden;
-  }
-
-.zoomer:active {
-  border-color:#bbb;
-  background-color:#ddd;
-  box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-  -moz-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-  -webkit-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-  }
-
-.zoomer {
-  width:28px;
-  height:28px;
-  top:10px;
-  left:10px;
-  z-index: 2;
-  }
-
-.zoomin {
-  background-position:-31px -1px;
-  left:39px;
-  border-radius:0px 3px 3px 0px;
-  -moz-border-radius:0px 3px 3px 0px;
-  -webkit-border-radius:0px 3px 3px 0px;
-  }
-
-.zoomout {
-  background-position:-61px -1px;
-  border-radius:3px 0px 0px 3px;
-  -moz-border-radius:3px 0px 0px 3px;
-  -webkit-border-radius:3px 0px 0px 3px;
-  }
-
 /* ### Zoombox ### */
 .zoombox-box,
 .boxselector-box {
-  border:1px dashed #888;
-  background:rgba(255,255,255,0.25);
+  border:2px solid rgba(200, 0, 100, .8);
+  background:rgba(255,255,255,0.3);
   position:absolute;
   top:0px; left:0px; width:0px; height:0px;
   display:none;

@@ -8,17 +8,29 @@
     <title>Create an Overpass API bounding box query</title>
     <link   href='site.css' rel='stylesheet'>
     <script src='vendor/modestmaps.js'></script>
-    <script src='vendor/jquery-1.7.2.min.js'></script>
+    <script src='vendor/boxselector.js'></script>
     <script src='site.js'></script>
   </head>
   <body>
     <div id='header' class='overlay'>
+      <div class='help'>What's this?
+        <div class='dropdown'>
+          <div class='inner'>
+            <p>
+            This site is a fast and convenient way to construct a bounding box query to the
+            <a href='http://overpass-api.de/'>Overpass API</a>.
+            </p>
+            <p>
+            For details on how to use the URL, read up on the <a href='http://wiki.openstreetmap.org/wiki/Xapi#Overpass_API'>documentation</a>
+            </p>
+          </div>
+        </div>
+      </div>
       <h1>Create an Overpass API bounding box query</h1>
-      <div class='description'>Click and drag to create the query URL</div>
+      <div class='description'>Shift + click + drag to create the query URL</div>
     </div>
     <div id='map'></div>
     <div id='query' class='overlay'>
-      http://www.overpass-api.de/api/xapi?map?bbox=<span class=''></span>,<span class=''></span>,<span class=''></span>,<span class=''></span>
     </div>
   </body>
 </html>
