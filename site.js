@@ -8,7 +8,7 @@ window.onload = function() {
         )
     );
     map.setZoomRange(2, 18);
-    map.setZoom(2).setCenter({ lat: 10, lon: 0 });
+    map.setZoom(2).setCenter({ lat: 18, lon: 0 });
 
     // Set up box selector and update query div with result.
     wax.mm.boxselector(map, null, function(c) {
