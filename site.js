@@ -10,8 +10,9 @@ window.onload = function() {
     map.setZoomRange(2, 18);
 
     // Set up box selector and update query div with result.
+    var bbox = [0, 0, 0, 0];
     var box = wax.mm.boxselector(map, null, function(c) {
-        var bbox = [
+        bbox = [
             c[0].lon.toPrecision(8),
             c[1].lat.toPrecision(8),
             c[1].lon.toPrecision(8),
@@ -19,11 +20,10 @@ window.onload = function() {
         ];
         var query = document.getElementById('query');
         query.innerText = url + bbox.join(',');
-        bbox.push(map.getZoom());
+
         var center = map.getCenter();
-        bbox.push(center.lat);
-        bbox.push(center.lon);
-        window.location.hash = bbox.join(',');
+        window.location.hash =
+            bbox.concat([map.getZoom(), center.lat, center.lon]).join(',');
     });
     var param = window.location.hash.substr(1).split(',');
     if (param.length == 7) {
@@ -32,6 +32,11 @@ window.onload = function() {
     } else {
         map.setZoom(2).setCenter({ lat: 18, lon: 0 });
     }
+    map.addCallback('drawn', function(m) {
+        var center = map.getCenter();
+        window.location.hash =
+            bbox.concat([map.getZoom(), center.lat, center.lon]).join(',');
+    });
 
     // Select query when clicked.
     document.getElementById('query').addEventListener('click', function(e) {
