@@ -3,24 +3,36 @@ window.onload = function() {
     var map = new MM.Map('map',
         new MM.Layer(
             new MM.TemplatedMapProvider(
-                'http://tile.openstreetmap.org/{Z}/{X}/{Y}.png'
+                'http://c.tiles.mapbox.com/v3/lxbarth.map-9zigz7z2/{Z}/{X}/{Y}.png'
             )
         )
     );
     map.setZoomRange(2, 18);
-    map.setZoom(2).setCenter({ lat: 18, lon: 0 });
 
     // Set up box selector and update query div with result.
-    wax.mm.boxselector(map, null, function(c) {
-        var query = document.getElementById('query');
-        query.innerText = url + [
+    var box = wax.mm.boxselector(map, null, function(c) {
+        var bbox = [
             c[0].lon.toPrecision(8),
             c[1].lat.toPrecision(8),
             c[1].lon.toPrecision(8),
             c[0].lat.toPrecision(8)
-        ].join(',');
+        ];
+        var query = document.getElementById('query');
+        query.innerText = url + bbox.join(',');
+        bbox.push(map.getZoom());
+        var center = map.getCenter();
+        bbox.push(center.lat);
+        bbox.push(center.lon);
+        window.location.hash = bbox.join(',');
     });
-    
+    var param = window.location.hash.substr(1).split(',');
+    if (param.length == 7) {
+        map.setZoom(param[4]).setCenter({ lat: param[5], lon: param[6] });
+        box.extent([{lat: param[3], lon: param[0]}, {lat: param[1], lon: param[2]}]);
+    } else {
+        map.setZoom(2).setCenter({ lat: 18, lon: 0 });
+    }
+
     // Select query when clicked.
     document.getElementById('query').addEventListener('click', function(e) {
         var range = document.createRange();
