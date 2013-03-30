@@ -20,6 +20,13 @@ window.onload = function() {
         ];
         var query = document.getElementById('query');
         query.innerText = url + bbox.join(',');
+        var query = document.getElementById('parameters');
+        query.innerText = 'NW lon: ' + Math.round(bbox[0]) +
+                          ' NW lat: ' + Math.round(bbox[3]) +
+                          ' SE lon: ' + Math.round(bbox[2]) +
+                          ' SE lat: ' + Math.round(bbox[1]) +
+                          ' Center lon: ' + Math.round(parseFloat(bbox[2]) + (bbox[0] - bbox[2]) / 2) +
+                          ' Center lat: ' + Math.round(parseFloat(bbox[1]) + (bbox[3] - bbox[1]) / 2);
 
         var center = map.getCenter();
         window.location.hash =
@@ -39,12 +46,15 @@ window.onload = function() {
     });
 
     // Select query when clicked.
-    document.getElementById('query').addEventListener('click', function(e) {
-        var range = document.createRange();
-        range.selectNode(e.target);
-        window.getSelection().addRange(range);
-        e.target.select && e.target.select();
-    });
+    var elements = document.getElementsByClassName('selectcopy');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', function(e) {
+            var range = document.createRange();
+            range.selectNode(e.target);
+            window.getSelection().addRange(range);
+            e.target.select && e.target.select();
+        });
+    };
 
     // Make sure map navigation does not interfere with box
     // selecting - TODO: Is this necessary or am I missing sth?

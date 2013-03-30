@@ -83,7 +83,7 @@ body {
 #map {
   position: absolute;
   top: 100px;
-  bottom: 80px;
+  bottom: 120px;
   left: 100px;
   right: 100px;
   width: auto;
@@ -100,9 +100,10 @@ body {
   padding-top: 30px;
   }
 
-#query {
+#results {
   position: absolute;
   bottom: 10px;
+  line-height: 30px;
   }
 .overlay {
   padding: 20px 100px;
@@ -111,7 +112,7 @@ body {
 #attribution {
   font-size: 12px;
   position: absolute;
-  bottom: 80px;
+  bottom: 120px;
   right: 105px;
   }
   #attribution a {
