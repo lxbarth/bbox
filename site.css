@@ -105,6 +105,10 @@ body {
   bottom: 10px;
   line-height: 30px;
   }
+  #parameters {
+    font-size: 10px;
+    color: #aaa;
+  }
 .overlay {
   padding: 20px 100px;
 }
